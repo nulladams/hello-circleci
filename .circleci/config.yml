@@ -39,4 +39,6 @@ workflows:
             - print_hello
       - build
       - my_job
+          requires:
+            - build
         
