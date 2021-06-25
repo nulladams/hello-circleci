@@ -20,6 +20,16 @@ jobs:
           name: "echo an env var that is part of our project"
           command: |
             echo $MY_ENV_VAR
+  my_job:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
+      - run:
+          name: on error
+          command: echo "Hello Error"
+          when: on_fail
+
 workflows:
   welcome:
     jobs:
@@ -28,4 +38,5 @@ workflows:
           requires:
             - print_hello
       - build
+      - my_job
         
