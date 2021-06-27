@@ -58,11 +58,13 @@ workflows:
       - print_world:
           requires:
             - print_hello
-      - build
       - save_hello_world_output
       - print_output_file:
           requires:
-            - sabe_hello_world_output
+            - save_hello_world_output
+      - buid:
+          requires:
+            - print_output_file  
       - my_job:
           requires:
             - build
