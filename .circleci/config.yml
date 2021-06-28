@@ -1,5 +1,10 @@
 version: 2.1
 
+commands:
+  print_pipeline_id:
+    steps:
+      - run: echo ${CIRCLE_WORKFLOW_ID}
+
 jobs:
   print_hello:
     docker:
@@ -20,6 +25,7 @@ jobs:
           name: "echo an env var that is part of our project"
           command: |
             echo $MY_ENV_VAR
+      - print_pipeline_id
   
   my_job:
     docker:
